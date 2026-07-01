@@ -1,12 +1,18 @@
 <div align="center">
   <img src="./assets/banner.svg" alt="Awesome Denoising Diffusion Banner" width="100%" />
+  
+  <p align="center">
+    <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  </p>
 </div>
 
 # 🌟 Awesome-Denoising-Diffusion
 
 ## 📐 Denoising Diffusion Models: Evolution, Variants, Types, & Applications 🧬
 
-Denoising Diffusion Models (also known as Diffusion Probabilistic Models) represent a dominant class of generative artificial intelligence architectures capable of synthesizing high-fidelity images, videos, audio waveforms, and molecular structures. Mathematically, these models operate by framing data generation as the reverse of a progressive noise injection process. During the forward pass, a dataset sample is systematically degraded into pure Gaussian noise over a series of chronological time-steps. The diffusion model is then trained to predict and subtract this noise iteratively, mathematically mapping a chaotic noise distribution back into a clean, sharp data manifold.
+Welcome to the ultimate curated resource list for **Denoising Diffusion Probabilistic Models (DDPM)**, **Score-Based Generative SDEs**, **Flow Matching / Rectified Flow Models**, and **Diffusion Transformers (DiT)**. This repository tracks the chronological evolution, mathematical fundamentals, training optimizations, structural distillation, hardware-aware implementations (like FlashAttention), and cutting-edge applications in text-to-image synthesis, spatio-temporal video generation (like Sora), and biotech protein design.
+
+Denoising Diffusion Models represent a dominant class of generative artificial intelligence architectures capable of synthesizing high-fidelity images, videos, audio waveforms, and molecular structures. Mathematically, these models operate by framing data generation as the reverse of a progressive noise injection process. During the forward pass, a dataset sample is systematically degraded into pure Gaussian noise over a series of chronological time-steps. The diffusion model is then trained to predict and subtract this noise iteratively, mathematically mapping a chaotic noise distribution back into a clean, sharp data manifold.
 
 ---
 
