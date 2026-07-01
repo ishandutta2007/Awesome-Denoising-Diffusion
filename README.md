@@ -9,7 +9,7 @@ Denoising Diffusion Models (also known as Diffusion Probabilistic Models) repres
 
 The algorithmic progression of denoising diffusion models has transitioned from highly latent pixel-space math to compressed latent vectors, ordinary differential equation (ODE) straight lines, and scalable multi-modal transformers.
 
-```
+```mermaid
 [DDPM (Sohl-Dickstein, 2015)] ----> [Latent Diffusion (Rombach, 2022)] ----> [Flow Matching Transformers (2024-Present)](Slow Pixel-Space Sampling)           (Compressed VAE Latent Spaces)              (Straight-Line Scaling & Unified Patches)
 ```
 
