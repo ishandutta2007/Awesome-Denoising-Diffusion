@@ -97,6 +97,20 @@ To advance this documentation repository, infrastructure workspace, or implement
 * Generate a **comparison matrix table** explicitly analyzing standard DDPM, DDIM, Latent Diffusion (U-Net), and modern Diffusion Transformers (DiT) across structural loss components, GPU VRAM footprints, time-step complexities, and inference step thresholds.
 * Establish a **performance evaluation suite using Triton** to profile exactly how compiling a Flow-Matching transformer's linear ordinary differential equation (ODE) sampling loop straight into GPU registers alters wall-clock processing throughput.
 
+---
+
+## 📈 Star History
+
+<div align="center">
+<a href="https://www.star-history.com/?repos=ishandutta2007%2FAwesome-Denoising-Diffusion&type=date&legend=bottom-right">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Denoising-Diffusion&type=date&theme=dark&legend=bottom-right" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Denoising-Diffusion&type=date&legend=bottom-right" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Denoising-Diffusion&type=date&legend=bottom-right" />
+</picture>
+</a>
+</div>
+
 ***
 
 ## 🤝 Proactive Repository Follow-Ups
