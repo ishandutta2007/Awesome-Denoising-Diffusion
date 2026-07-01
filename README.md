@@ -16,14 +16,11 @@ flowchart LR
     --> C["Flow Matching Transformers (2024-Present)<br/>(Straight-Line Scaling & Unified Patches)"]
 ```
 
-*   **The Foundational Formulation Era (DDPM, Sohl-Dickstein et al., 2015 / Ho et al., 2020)**
-    *   *Concept:* The structural baseline. **Denoising Diffusion Probabilistic Models (DDPM)** formalized the discrete-time Markov chain framework. A convolutional **U-Net** backbone learned to predict the noise distribution added to raw image pixels at explicit time-steps.
-    *   *Limitation:* Catastrophically computationally expensive. Generating a single image required running hundreds or thousands of sequential forward passes through the pixel-space U-Net, introducing immense processing latency.
-*   **The Latent Space Compression Era (Stable Diffusion, Rombach et al., 2022)**
-    *   *Concept:* Resolved the pixel-space latency crisis. Instead of running the denoising loops on high-resolution pixels, **Latent Diffusion Models (LDMs)** use a Variational Autoencoder (VAE) to compress images into a highly dense, lower-dimensional latent space. The U-Net then executes denoising steps over this compressed matrix.
-    *   *Significance:* Democratic access to generation. It slashed the computational compute requirements, letting developers train and execute high-fidelity image synthesis on standard consumer-grade GPUs.
-*   **The Diffusion Transformer & Flow Matching Era (~2024–Present)**
-    *   *Concept:* The current modern state-of-the-art foundation standard. Popularized by architectures like Stable Diffusion 3, Midjourney v6, and Black Forest Labs' **FLUX** series. It completely discards convolutional U-Net architectures, replacing them with a scalable **Diffusion Transformer (DiT)** backbone. Images are sliced into structural token patches, and the denoising path is optimized via straight-line **Flow Matching** ordinary differential equations (ODEs).
+| Era / Concept | Year | Paper Link | Description / Details |
+| :--- | :--- | :--- | :--- |
+| **The Foundational Formulation Era (DDPM)** | 2015 / 2020 | Sohl-Dickstein et al. (2015): [arXiv:1503.03585](https://arxiv.org/abs/1503.03585)<br/>Ho et al. (2020): [arXiv:2006.11239](https://arxiv.org/abs/2006.11239) | **Concept:** The structural baseline. **Denoising Diffusion Probabilistic Models (DDPM)** formalized the discrete-time Markov chain framework. A convolutional **U-Net** backbone learned to predict the noise distribution added to raw image pixels at explicit time-steps.<br/>**Limitation:** Catastrophically computationally expensive. Generating a single image required running hundreds or thousands of sequential forward passes through the pixel-space U-Net, introducing immense processing latency. |
+| **The Latent Space Compression Era (Stable Diffusion)** | 2022 | Rombach et al. (2022): [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) | **Concept:** Resolved the pixel-space latency crisis. Instead of running the denoising loops on high-resolution pixels, **Latent Diffusion Models (LDMs)** use a Variational Autoencoder (VAE) to compress images into a highly dense, lower-dimensional latent space. The U-Net then executes denoising steps over this compressed matrix.<br/>**Significance:** Democratic access to generation. It slashed the computational compute requirements, letting developers train and execute high-fidelity image synthesis on standard consumer-grade GPUs. |
+| **The Diffusion Transformer & Flow Matching Era** | 2022–2024 | Peebles & Xie (2023): [arXiv:2212.09748](https://arxiv.org/abs/2212.09748)<br/>Lipman et al. (2023): [arXiv:2210.02747](https://arxiv.org/abs/2210.02747) | **Concept:** The current modern state-of-the-art foundation standard. Popularized by architectures like Stable Diffusion 3, Midjourney v6, and Black Forest Labs' **FLUX** series. It completely discards convolutional U-Net architectures, replacing them with a scalable **Diffusion Transformer (DiT)** backbone. Images are sliced into structural token patches, and the denoising path is optimized via straight-line **Flow Matching** ordinary differential equations (ODEs). |
 
 ---
 
@@ -31,15 +28,11 @@ flowchart LR
 
 The Diffusion family tree features specialized mathematical core modifications designed to optimize sampling speed, manage probability paths, and enable non-Markovian generation.
 
-*   **Denoising Diffusion Implicit Models (DDIM)**
-    *   *Mechanism:* Generalizes DDPM into a non-Markovian deterministic trajectory. Because the generation path follows fixed mathematical equations rather than stochastic random walks, it allows the model to skip time-steps during inference.
-    *   *Pros:* Drastically compresses generation latency, requiring only 20 to 50 steps to output crisp graphics instead of the 1,000 steps demanded by DDPM.
-*   **Score-Based Generative SDEs (Continuous Time)**
-    *   *Mechanism:* Popularized by Song et al. It models the forward and reverse diffusion pathways as continuous-time Stochastic Differential Equations (SDEs), utilizing score matching to estimate the gradient of the log-probability density of the data.
-    *   *Pros:* Provides a unified mathematical umbrella that links traditional diffusion models cleanly with score-based energy networks.
-*   **Flow Matching / Rectified Flow Models**
-    *   *Mechanism:* Replaces traditional curved Gaussian denoising trajectories with linear, straight ordinary differential equation (ODE) vector directions. 
-    *   *Pros:* Vastly accelerates convergence speed, allowing high-fidelity, single-turn, or 4-step real-time generation when combined with consistency distillation.
+| Variant | Year | Paper Link | Description / Details |
+| :--- | :--- | :--- | :--- |
+| **Denoising Diffusion Implicit Models (DDIM)** | 2020 | Song et al. (2020): [arXiv:2010.02502](https://arxiv.org/abs/2010.02502) | **Mechanism:** Generalizes DDPM into a non-Markovian deterministic trajectory. Because the generation path follows fixed mathematical equations rather than stochastic random walks, it allows the model to skip time-steps during inference.<br/>**Pros:** Drastically compresses generation latency, requiring only 20 to 50 steps to output crisp graphics instead of the 1,000 steps demanded by DDPM. |
+| **Score-Based Generative SDEs (Continuous Time)** | 2020 | Song et al. (2020): [arXiv:2011.13456](https://arxiv.org/abs/2011.13456) | **Mechanism:** Popularized by Song et al. It models the forward and reverse diffusion pathways as continuous-time Stochastic Differential Equations (SDEs), utilizing score matching to estimate the gradient of the log-probability density of the data.<br/>**Pros:** Provides a unified mathematical umbrella that links traditional diffusion models cleanly with score-based energy networks. |
+| **Flow Matching / Rectified Flow Models** | 2022 | Lipman et al. (2022): [arXiv:2210.02747](https://arxiv.org/abs/2210.02747)<br/>Liu et al. (2022): [arXiv:2209.03003](https://arxiv.org/abs/2209.03003) | **Mechanism:** Replaces traditional curved Gaussian denoising trajectories with linear, straight ordinary differential equation (ODE) vector directions.<br/>**Pros:** Vastly accelerates convergence speed, allowing high-fidelity, single-turn, or 4-step real-time generation when combined with consistency distillation. |
 
 ---
 
@@ -47,11 +40,10 @@ The Diffusion family tree features specialized mathematical core modifications d
 
 To deploy diffusion models within interactive, low-latency commercial applications, specialized distillation layers compress the multi-step sampling loop.
 
-*   **Classifier-Free Guidance (CFG)**
-    *   *Profile:* Prompt conditioning multiplier. During the denoising pass, the model calculates two parallel pathways: a text-conditioned prediction and an unconditioned prediction. The system scales up the delta between them via a **CFG scale parameter**, letting developers dynamically tune how strictly the generation adheres to the prompt text versus creative variance.
-*   **Latent Consistency Models (LCM) / Adversarial Distillation**
-    *   *Profile:* Step-collapsing distillation layers. LCMs treat the continuous generation path as a consistency function, training a student network to predict the final, fully denoised latent vector at step zero in a single computational jump.
-    *   *Significance:* Unlocks high-volume, real-time interactive generation pipelines (1-step to 4-step sampling) for streaming live content.
+| Class / Technique | Year | Paper Link | Description / Details |
+| :--- | :--- | :--- | :--- |
+| **Classifier-Free Guidance (CFG)** | 2021 | Ho & Salimans (2021): [arXiv:2207.12598](https://arxiv.org/abs/2207.12598) | **Profile:** Prompt conditioning multiplier. During the denoising pass, the model calculates two parallel pathways: a text-conditioned prediction and an unconditioned prediction. The system scales up the delta between them via a **CFG scale parameter**, letting developers dynamically tune how strictly the generation adheres to the prompt text versus creative variance. |
+| **Latent Consistency Models (LCM) / Adversarial Distillation** | 2023 | Luo et al. (2023): [arXiv:2310.04378](https://arxiv.org/abs/2310.04378) | **Profile:** Step-collapsing distillation layers. LCMs treat the continuous generation path as a consistency function, training a student network to predict the final, fully denoised latent vector at step zero in a single computational jump.<br/>**Significance:** Unlocks high-volume, real-time interactive generation pipelines (1-step to 4-step sampling) for streaming live content. |
 
 ---
 
@@ -59,23 +51,20 @@ To deploy diffusion models within interactive, low-latency commercial applicatio
 
 Executing multi-step diffusion sampling loops across commercial cloud scales introduces severe memory-bus constraints and infrastructure processing bottlenecks.
 
-*   **The Transformer Sequence Length Wall (Megapixel Explosion)**
-    *   *The Problem:* When scaling up Diffusion Transformers (DiTs) to generate massive $1024 \times 1024$ megapixel outputs or continuous video streams, slicing the latent spaces into fine patches creates thousands of active tokens. This causes the internal self-attention matrix calculation to hit a quadratic ($O(N^2)$) memory footprint wall, triggering cluster-wide VRAM crashes.
-    *   *Mitigation:* Implementing **FlashAttention hardware-aware register fusion**, coupled with **Grouped-Query Attention (GQA)** to compress the scale of the active cached attention matrices.
-*   **The Fine-Grained Layout Control Deficit**
-    *   *The Problem:* Natural language text descriptions are inherently ambiguous. Forcing a denoising loop to place an object at exact pixel locations or match a highly specific human posture using text prompts alone is highly inefficient.
-    *   *Mitigation:* Layering auxiliary adapter networks like **ControlNet** or **IP-Adapter**, which inject structural conditioning maps (Canny edges, depth maps, openpose skeletons, or image style vectors) directly into the frozen base model weights.
+| Challenge & Solution | Year | Paper Link | Description / Details |
+| :--- | :--- | :--- | :--- |
+| **The Transformer Sequence Length Wall (Megapixel Explosion)** | 2022 / 2023 | FlashAttention (2022): [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)<br/>GQA (2023): [arXiv:2305.13245](https://arxiv.org/abs/2305.13245) | **The Problem:** When scaling up Diffusion Transformers (DiTs) to generate massive $1024 \times 1024$ megapixel outputs or continuous video streams, slicing the latent spaces into fine patches creates thousands of active tokens. This causes the internal self-attention matrix calculation to hit a quadratic ($O(N^2)$) memory footprint wall, triggering cluster-wide VRAM crashes.<br/>**Mitigation:** Implementing **FlashAttention hardware-aware register fusion**, coupled with **Grouped-Query Attention (GQA)** to compress the scale of the active cached attention matrices. |
+| **The Fine-Grained Layout Control Deficit** | 2023 | ControlNet (2023): [arXiv:2302.05543](https://arxiv.org/abs/2302.05543)<br/>IP-Adapter (2023): [arXiv:2308.06721](https://arxiv.org/abs/2308.06721) | **The Problem:** Natural language text descriptions are inherently ambiguous. Forcing a denoising loop to place an object at exact pixel locations or match a highly specific human posture using text prompts alone is highly inefficient.<br/>**Mitigation:** Layering auxiliary adapter networks like **ControlNet** or **IP-Adapter**, which inject structural conditioning maps (Canny edges, depth maps, openpose skeletons, or image style vectors) directly into the frozen base model weights. |
 
 ---
 
 ## 5. Frontier Real-World AI Applications
 
-*   **Text-to-Image and Graphic Asset Foundation Engines**
-    *   *Application:* Powers commercial asset platforms (such as Midjourney, FLUX, Adobe Firefly). Hybrid CLIP/T5 text conditioning modules project user prompts into deep DiT cores, synthesizing high-resolution, photorealistic creative marketing, branding, and typography graphics natively.
-*   **Spatio-Temporal Physics Video Generation (Sora Class)**
-    *   *Application:* Drives next-generation automated pre-visualization and movie composition pipelines. Video clips are tokenized into 3D spacetime cubes; the diffusion transformer removes noise across these cubes concurrently, predicting straight-line trajectories to generate physically consistent, fluid video animations.
-*   **De Novo Molecular Docking and Protein Design (BioTech)**
-    *   *Application:* Accelerates target-specific drug discovery and structural biology research. Specialized SE(3)-equivariant diffusion models (such as AlphaFold 3 or RFdiffusion) treat molecular atomic coordinate fields as data clouds, denoising random initial spaces into stable, valid 3D protein backbones that satisfy explicit biochemical bonding rules.
+| Application | Year | Paper Link | Description / Details |
+| :--- | :--- | :--- | :--- |
+| **Text-to-Image and Graphic Asset Foundation Engines** | 2021 / 2022 | GLIDE (2021): [arXiv:2112.10741](https://arxiv.org/abs/2112.10741)<br/>Imagen (2022): [arXiv:2205.11487](https://arxiv.org/abs/2205.11487) | **Application:** Powers commercial asset platforms (such as Midjourney, FLUX, Adobe Firefly). Hybrid CLIP/T5 text conditioning modules project user prompts into deep DiT cores, synthesizing high-resolution, photorealistic creative marketing, branding, and typography graphics natively. |
+| **Spatio-Temporal Physics Video Generation (Sora Class)** | 2022 / 2024 | VDM (2022): [arXiv:2204.03458](https://arxiv.org/abs/2204.03458)<br/>Sora (2024): [Technical Report](https://openai.com/research/video-generation-models-as-world-simulators) | **Application:** Drives next-generation automated pre-visualization and movie composition pipelines. Video clips are tokenized into 3D spacetime cubes; the diffusion transformer removes noise across these cubes concurrently, predicting straight-line trajectories to generate physically consistent, fluid video animations. |
+| **De Novo Molecular Docking and Protein Design (BioTech)** | 2022 / 2023 | DiffDock (2022): [arXiv:2210.01776](https://arxiv.org/abs/2210.01776)<br/>RFdiffusion (2023): [Nature Paper](https://www.nature.com/articles/s41587-023-01830-6) | **Application:** Accelerates target-specific drug discovery and structural biology research. Specialized SE(3)-equivariant diffusion models (such as AlphaFold 3 or RFdiffusion) treat molecular atomic coordinate fields as data clouds, denoising random initial spaces into stable, valid 3D protein backbones that satisfy explicit biochemical bonding rules. |
 
 ---
 
