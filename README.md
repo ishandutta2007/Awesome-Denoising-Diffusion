@@ -1,11 +1,16 @@
-# Awesome-Denoising-Diffusion
-## Denoising Diffusion Models: Evolution, Variants, Types, & Applications
+<div align="center">
+  <img src="./assets/banner.svg" alt="Awesome Denoising Diffusion Banner" width="100%" />
+</div>
+
+# 🌟 Awesome-Denoising-Diffusion
+
+## 📐 Denoising Diffusion Models: Evolution, Variants, Types, & Applications 🧬
 
 Denoising Diffusion Models (also known as Diffusion Probabilistic Models) represent a dominant class of generative artificial intelligence architectures capable of synthesizing high-fidelity images, videos, audio waveforms, and molecular structures. Mathematically, these models operate by framing data generation as the reverse of a progressive noise injection process. During the forward pass, a dataset sample is systematically degraded into pure Gaussian noise over a series of chronological time-steps. The diffusion model is then trained to predict and subtract this noise iteratively, mathematically mapping a chaotic noise distribution back into a clean, sharp data manifold.
 
 ---
 
-## 1. The Chronological Evolution
+## ⏱️ 1. The Chronological Evolution
 
 The algorithmic progression of denoising diffusion models has transitioned from highly latent pixel-space math to compressed latent vectors, ordinary differential equation (ODE) straight lines, and scalable multi-modal transformers.
 
@@ -24,7 +29,7 @@ flowchart LR
 
 ---
 
-## 2. Core Functional & Mathematical Variants
+## 🔬 2. Core Functional & Mathematical Variants
 
 The Diffusion family tree features specialized mathematical core modifications designed to optimize sampling speed, manage probability paths, and enable non-Markovian generation.
 
@@ -36,7 +41,7 @@ The Diffusion family tree features specialized mathematical core modifications d
 
 ---
 
-## 3. Structural Sampling & Distillation Classes
+## ⚡ 3. Structural Sampling & Distillation Classes
 
 To deploy diffusion models within interactive, low-latency commercial applications, specialized distillation layers compress the multi-step sampling loop.
 
@@ -47,7 +52,7 @@ To deploy diffusion models within interactive, low-latency commercial applicatio
 
 ---
 
-## 4. Production Engineering Challenges & Hardware Solutions
+## ⚙️ 4. Production Engineering Challenges & Hardware Solutions
 
 Executing multi-step diffusion sampling loops across commercial cloud scales introduces severe memory-bus constraints and infrastructure processing bottlenecks.
 
@@ -58,7 +63,7 @@ Executing multi-step diffusion sampling loops across commercial cloud scales int
 
 ---
 
-## 5. Frontier Real-World AI Applications
+## 🌌 5. Frontier Real-World AI Applications
 
 | Application | Year | Paper Link | Description / Details |
 | :--- | :--- | :--- | :--- |
@@ -68,7 +73,8 @@ Executing multi-step diffusion sampling loops across commercial cloud scales int
 
 ---
 
-## References
+## 📚 References
+
 1. Sohl-Dickstein, J., et al. (2015). Deep unsupervised learning using nonequilibrium thermodynamics. *International Conference on Machine Learning (ICML)*, 2256-2275.
 2. Ho, J., Jain, A., & Abbeel, P. (2020). Denoising diffusion probabilistic models. *Advances in Neural Information Processing Systems (NeurIPS)*, 33, 6840-6880.
 3. Song, J., Meng, C., & Ermon, S. (2020). Denoising diffusion implicit models. *arXiv preprint arXiv:2010.02502*.
@@ -78,6 +84,8 @@ Executing multi-step diffusion sampling loops across commercial cloud scales int
 
 ---
 
+## 🛠️ Next Steps & Development Pathways
+
 To advance this documentation repository, infrastructure workspace, or implementation setup, consider exploring these adjacent development pathways:
 * Build a **Python code snippet using the Hugging Face `diffusers` library** illustrating how to load a Latent Diffusion Pipeline and pass custom image-to-image structural masks through an execution loop.
 * Generate a **comparison matrix table** explicitly analyzing standard DDPM, DDIM, Latent Diffusion (U-Net), and modern Diffusion Transformers (DiT) across structural loss components, GPU VRAM footprints, time-step complexities, and inference step thresholds.
@@ -85,7 +93,7 @@ To advance this documentation repository, infrastructure workspace, or implement
 
 ***
 
-**Proactive Repository Follow-Ups:**
+## 🤝 Proactive Repository Follow-Ups
 
 To assist with your documentation repository setup, let me know how you would like to proceed by choosing one of the options below:
 * I can provide a **complete Python code boilerplate using PyTorch** demonstrating how to write a basic Gaussian noise prediction loop featuring a simplified U-Net layer from scratch.
